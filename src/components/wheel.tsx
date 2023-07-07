@@ -49,7 +49,7 @@ export default class Wheel extends Component<WheelProps, WheelState> {
         <div className={WheelStyles.button_container}>
           <button
             onClick={() => {
-              this.setState({ isStarted: true, pixel: 2210 }, () => {});
+              this.setState({ isStarted: true, pixel: (max - min) * 90 }, () => {});
             }}
           >
             Start

@@ -24,7 +24,8 @@ export default class App extends Component<{}, AppState> {
   };
 
   startGame = (min: number, max: number) => {
-    this.setState({ min, max, isStarted: true, randomNumbersArray: randomNumbers(min, max) });
+    if (min !== max && min !== 0 && max !== 0)
+      this.setState({ min, max, isStarted: true, randomNumbersArray: randomNumbers(min, max) });
   };
 
   render() {
