@@ -1,0 +1,35 @@
+.container {
+  background-color: #0db73a;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  color: #fff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  label {
+    font-size: 30px;
+  }
+
+  input {
+    outline: none;
+    border: none;
+    padding: 10px 14px;
+  }
+
+  .button {
+    padding: 10px 14px;
+    cursor: pointer;
+  }
+}
+
+.form-input {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}

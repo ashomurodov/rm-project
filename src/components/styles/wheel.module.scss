@@ -1,0 +1,64 @@
+.wheel {
+  width: 200px;
+  height: 100%;
+}
+
+.wheel_start {
+  transition: all 10s cubic-bezier(1, 0.21, 0, 0.9);
+}
+
+.wheel_container {
+  width: 200px;
+  height: 450px;
+  overflow-y: hidden;
+  border: 2px solid #0f0f0f;
+  position: relative;
+
+  &::before {
+    content: "Hello";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #0f0f0f;
+    left: -20px;
+    top: 5%;
+    clip-path: polygon(0 0, 0% 100%, 100% 59%);
+    z-index: 200;
+  }
+}
+
+.wheel_gamezone {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.button_container {
+  display: flex;
+  gap: 20px;
+  button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #00cd26;
+    color: #fff;
+    cursor: pointer;
+    transition: scale 0.2s ease;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+}
+
+.gameStop {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: rgb(255, 6, 6);
+  cursor: pointer;
+}

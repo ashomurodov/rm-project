@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
+import { Wheel } from "./components";
+import AppStyles from "./styles/app.module.scss";
+import { randomNumbers } from "./utils";
+import Main from "./components/main";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface AppState {
+  isStarted: boolean;
+  randomNumbersArray: number[];
+  min: number;
+  max: number;
 }
 
-export default App;
+export default class App extends Component<{}, AppState> {
+  state: AppState = {
+    isStarted: false,
+    randomNumbersArray: [],
+    min: 0,
+    max: 0,
+  };
+
+  stopGame = () => {
+    this.setState({ isStarted: false });
+  };
+
+  startGame = (min: number, max: number) => {
+    this.setState({ min, max, isStarted: true, randomNumbersArray: randomNumbers(min, max) });
+  };
+
+  render() {
+    const { isStarted, randomNumbersArray, min, max } = this.state;
+    return (
+      <div>
+        {isStarted ? (
+          <Wheel min={min} max={max} number={randomNumbersArray} stopGame={this.stopGame} />
+        ) : (
+          <Main onStartGame={this.startGame} />
+        )}
+      </div>
+    );
+  }
+}
